@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'tasks/css/index.css' %}">
+    <title>Task Manager</title>
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="{% url 'tasks:logout' %}">Logout</a>
+         <a href="#">{{user.username}}</a>
+    </div>
+
+    <div style="padding-left:16px">
+        <h1>Task Manager</h1>
+    </div>
+
+    <div class="add-task">
+        <a href="{%url 'tasks:index' %}">Go Back</a>
+    </div>
+
+    <div style="margin-left:16px" class="search">
+        <h3>Search:</h3>
+        <form action="{% url 'tasks:search' %}" method="post">
+            {%csrf_token%}
+            <input type="text" id="title" name="title">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+
+    <div style="margin-left:16px" class="filter">
+        <h3>Filter by:</h3>
+        <form action="{% url 'tasks:filter' %}" method="post">
+            {% csrf_token %}
+            <label for="creation-date"><strong>Creation date:</strong></label>
+		    <input type="date" id="creation-date" name="creation_date">
+            <br>
+            <label for="due-date"><strong>Due date:</strong></label>
+		    <input type="date" id="due-date" name="due_date">
+            <br>
+            <label for="priority"><strong>Priority</strong></label>
+		    <select id="priority" name="priority">
+                <option disabled selected value>--select an option --</option>
+                <option value="1">High</option>
+                <option value="2">Medium</option>
+                <option value="3">Low</option>
+
+            </select>
+            <br>
+            <input type="checkbox" id="is-complete" name="is_complete" value="completed">
+            <label for="is-complete">Completed</label>
+            <br>
+            <input type="submit" value="Filter">
+        </form>
+
+    </div>
+
+    <div class="task-list">
+        <h2>Task List</h2>
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Priority</th>
+                <th>Created</th>
+                <th>Due date</th>
+                <th>Created by</th>
+                <th>Completed</th>
+            </tr>
+            {% if tasks %}
+                {%for task in tasks%}
+                <tr>
+                    <td><a style="text-decoration:none;color:black"href="{%url 'tasks:details' task.id %}">{{task.title}}</a></td>
+                    {% if task.priority == 1 %}
+                        <td>High</td>
+                    {% elif task.priority == 2 %}
+                        <td>Medium</td>
+                    {% else %}
+                        <td>Low</td>
+                    {% endif %}
+                    <td>{{task.created_at}}</td>
+                    <td>{{task.due_date}}</td>
+                    <td>{{task.user.username}}</td>
+                    <td>{{task.is_complete}}</td>
+                </tr>
+                {%endfor%}
+            {% endif %}
+        </table>
+    </div>
+
+
+
+</body>
+</html>

@@ -96,12 +96,3 @@ input[type="submit"]:hover {
 .task-image img{
     margin:15px;
 }
-
-.task-image button{
-    background: #333;
-    color:white;
-    height: 28px;
-    width:80px;
-    margin-left:25px;
-    border-radius: 5px;
-}

@@ -89,8 +89,9 @@
 </head>
 <body>
 	 <div class="topnav">
-        <a class="active" href="#home">Logout</a>
-    </div>
+        <a href="{%url 'tasks:logout'%}">Logout</a>
+        <a href="#">{{user.username}}</a>
+     </div>
 
     <h1 style="margin-left:16px">Task Manager</h1>
      <div class="go-back">
@@ -103,46 +104,48 @@
                 margin-left:16px;
             }
         </style>
-        <a href="#">Go Back</a>
+        <a href="{% url 'tasks:index' %}">Go Back</a>
     </div>
 	<div class="task">
-		<h2>Task Title</h2>
-		<p>Task Description</p>
+		<h2>{{task.title}}</h2>
+        <h3>Created by: {{task.user.username}}<h3>
+        <h3>
+            Due Date: {{task.due_date}}
+        </h3>
+        <h3>
+            Status:
+            {% if task.is_complete %}
+                Completed
+            {% else %}
+                Incomplete
+            {% endif %}
+        </h3>
+        <h3>
+            Priority:
+            {% if task.priority == 1 %}
+                    High
+                {% elif task.priority == 2 %}
+                    Medium
+                {% else %}
+                    Low
+                {% endif %}
+        </h3>
+        <p>{{task.description}}</p>
+
 		<div class="task-image">
-            <div>
-                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-            </div>
-
-			<div>
-                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-            </div>
-
-			<div>
-                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-            </div>
-
-			<div>
-                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-            </div>
-
-			<div>
-                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-            </div>
-
-			<div>
-                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-            </div>
-
-			<div>
-                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-            </div>
+            {% for image in task.image_set.all %}
+                <div>
+                    <img style="width:250px;height:250px;" src="{{image.task_image.url}}">
+                </div>
+            {% endfor %}
         </div>
 
 
-
-		<a href="#">Update</a>
-		<a href="#">Delete</a>
-		<a href="#">Go Back</a>
+        {% if request.user == task.user %}
+		    <a href="{%url 'tasks:update' task.id%}">Update</a>
+		    <a href="{% url 'tasks:delete' task.id %}">Delete</a>
+        {%endif%}
+		<a href="{% url 'tasks:index' %}">Go Back</a>
 	</div>
 </body>
 </html>

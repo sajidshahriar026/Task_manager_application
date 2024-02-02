@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="topnav">
-        <a class="active" href="#home">Logout</a>
-         <a href="#">Username</a>
+        <a href="{%url 'tasks:logout' %}">Logout</a>
+         <a href="#">{{user.username}}</a>
     </div>
     <h1 style="margin-left:16px">Task Manager</h1>
     <div class="go-back">
@@ -24,82 +24,72 @@
                 margin-bottom: 15px;
             }
         </style>
-        <a href="#">Go Back</a>
+        <a href="{%url 'tasks:details' task.id%}">Go Back</a>
     </div>
     <div style="margin-top:15px;"class="input-form">
-		<form action="/submit" method="post" enctype="multipart/form-data">
-		<label for="title"><strong>Title:</strong></label>
-		<input type="text" id="title" name="title" required>
+		<form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+		    <label for="title"><strong>Title:</strong></label>
+		    <input type="text" id="title" name="title" value="{{task.title}}">
 
-		<label for="description"><strong>Description:</strong></label>
-		<textarea id="description" name="description" rows="4" required></textarea>
+		    <label for="description"><strong>Description:</strong></label>
+		    <textarea id="description" name="description" rows="4">{{task.description}}</textarea>
+
+            <label for="due-date"><strong>Due date:</strong></label>
+            <input type="datetime-local" id="due-date" name="due_date">
+             <br>
+            <label for="priority"><strong>Priority</strong></label>
+		    <select id="priority" name="priority">
+                {% if task.priority == 1 %}
+                    <option value="1">High</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Low</option>
+                {% elif task.priority == 2 %}
+                    <option value="2">Medium</option>
+                    <option value="1">High</option>
+                    <option value="3">Low</option>
+                {% else %}
+                    <option value="3">Low</option>
+                    <option value="1">High</option>
+                    <option value="2">Medium</option>
+                {% endif %}
+
+            </select>
+
 
         <div class="task-image">
-            <div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-			<div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-			<div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-			<div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-			<div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-			<div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-			<div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-            <div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-            <div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-            <div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-            <div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-            <div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-            <div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
-            <div>
-                <img style="width:100px;height:100px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
-                <button>Delete</button>
-            </div>
+            {% for image in images %}
+                <div>
+                    <style>
+                        a{
+                            background: #333;
+                            color:white;
+                            height: 20px;
+                            width:70px;
+                            margin-left:25px;
+                            padding: 10px;
+                            padding-right:0px;
+                            border-radius: 5px;
+                            text-decoration:none;
+                        }
+                    </style>
+                    <img style="width:100px;height:100px;" src="{{image.task_image.url}}">
+                    <a href="{% url 'tasks:delete_image' image.id %}">Delete</a>
+                </div>
+            {% endfor %}
         </div>
 
-		<label style="margin-top:15px;" for="images"><strong>Images:</strong></label>
-		<input type="file" id="images" name="images[]" multiple accept="image/*">
+		    <label style="margin-top:15px;" for="images"><strong>Images:</strong></label>
+		    <input type="file" id="images" name="images" multiple>
 
-        <input type="checkbox" id="is-complete" name="is_complete" value="completed">
+        {% if task.is_complete %}
+            <input type="checkbox" id="is-complete" name="is_complete" value="completed" checked>
+        {% else %}
+            <input type="checkbox" id="is-not-complete" name="is_complete" value="completed" unchecked>
+        {% endif %}
         <label for="is-complete">Completed</label>
 
-		<input type="submit" value="Submit">
+		<input type="submit" value="Update">
 	</form>
 	</div>
 

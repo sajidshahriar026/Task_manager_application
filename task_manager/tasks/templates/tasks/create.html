@@ -23,25 +23,38 @@
                 margin-left:16px;
             }
         </style>
-        <a href="#">Go Back</a>
+        <a href="{% url 'tasks:index' %}">Go Back</a>
     </div>
 
     <div style="margin-top:15px;" class="input-form">
 
-		<form action="/submit" method="post" enctype="multipart/form-data">
+		<form action="" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
 		    <label for="title"><strong>Title:</strong></label>
-		    <input type="text" id="title" name="title" required>
+		    <input type="text" id="title" name="title">
 
 		    <label for="description"><strong>Description:</strong></label>
-		    <textarea id="description" name="description" rows="4" required></textarea>
+		    <textarea id="description" name="description" rows="4"></textarea>
+
+            <label for="due-date"><strong>Due date:</strong></label>
+		    <input type="datetime-local" id="due-date" name="due_date">
 
 		    <label style="margin-top:15px;" for="images"><strong>Images:</strong></label>
-		    <input type="file" id="images" name="images[]" multiple accept="image/*">
+		    <input type="file" id="images" name="images" multiple>
+
+            <label for="priority"><strong>Priority</strong></label>
+		    <select id="priority" name="priority">
+                <option disabled selected value>--select an option--</option>
+                <option value="1">High</option>
+                <option value="2">Medium</option>
+                <option value="3">Low</option>
+
+            </select>
 
             <input type="checkbox" id="is-complete" name="is_complete" value="completed">
             <label for="is-complete">Completed</label>
 
-		    <input type="submit" value="Submit">
+		    <input type="submit" value="Create">
 	    </form>
 	</div>
 
