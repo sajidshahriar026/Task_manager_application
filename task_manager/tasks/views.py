@@ -6,6 +6,9 @@ from django.utils import timezone
 from django.db.models import Q
 from django.views import generic
 
+from rest_framework import viewsets
+
+from .serializers import TaskSerializer
 from .models import Task, Image
 
 from datetime import datetime
@@ -246,3 +249,4 @@ def signin(request):
 def logout(request):
     auth.logout(request)
     return redirect('tasks:signin')
+
