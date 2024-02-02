@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'tasks/css/create.css' %}">
+    <title>Task Manager</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="#home">Logout</a>
+         <a href="#">Username</a>
+    </div>
+    <h1 style="margin-left:16px">Task Manager</h1>
+    <div class="go-back">
+        <style>
+            .go-back a{
+                background-color: grey;
+                text-decoration: none;
+                color: #000000;
+                padding: 10px;
+                margin-left:16px;
+            }
+        </style>
+        <a href="#">Go Back</a>
+    </div>
+
+    <div style="margin-top:15px;" class="input-form">
+
+		<form action="/submit" method="post" enctype="multipart/form-data">
+		    <label for="title"><strong>Title:</strong></label>
+		    <input type="text" id="title" name="title" required>
+
+		    <label for="description"><strong>Description:</strong></label>
+		    <textarea id="description" name="description" rows="4" required></textarea>
+
+		    <label style="margin-top:15px;" for="images"><strong>Images:</strong></label>
+		    <input type="file" id="images" name="images[]" multiple accept="image/*">
+
+            <input type="checkbox" id="is-complete" name="is_complete" value="completed">
+            <label for="is-complete">Completed</label>
+
+		    <input type="submit" value="Submit">
+	    </form>
+	</div>
+
+
+</body>
+</html>
+

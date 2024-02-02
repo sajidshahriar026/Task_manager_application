@@ -1,10 +1,148 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link rel="stylesheet" href="{%static 'tasks/css/details.css' %}">-->
+<!--    <title>Task Manager</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="topnav">-->
+<!--        <a class="active" href="#home">Logout</a>-->
+<!--         <a href="#">Username</a>-->
+<!--    </div>-->
+
+<!--    <div style="padding-left:16px">-->
+<!--        <h1>Task Manager</h1>-->
+<!--    </div>-->
+
+<!--    <a>Go Back</a>-->
+
+<!--    <div class="task-detail">-->
+<!--        <h2>Task Title</h2>-->
+<!--        <p>-->
+<!--            Sed ut perspiciatis unde omnis iste natus error-->
+<!--            sit voluptatem accusantium doloremque laudantium,-->
+<!--            totam rem aperiam, eaque ipsa quae ab illo inventore-->
+<!--            veritatis et quasi architecto beatae vitae dicta sunt-->
+<!--            explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur-->
+<!--            aut odit aut fugit, sed quia consequuntur magni dolores eos qui-->
+<!--            ratione voluptatem sequi nesciunt. Neque porro quisquam est,-->
+<!--            qui dolorem ipsum quia dolor sit amet, consectetur, adipisci-->
+<!--            velit, sed quia non numquam eius modi tempora incidunt ut-->
+<!--            labore et dolore magnam aliquam quaerat voluptatem. Ut enim-->
+<!--            ad minima veniam, quis nostrum exercitationem ullam corporis-->
+<!--            suscipit laboriosam, nisi ut aliquid ex ea commodi-->
+<!--            consequatur? Quis autem vel eum iure reprehenderit-->
+<!--            qui in ea voluptate velit esse quam nihil molestiae-->
+<!--            consequatur, vel illum qui dolorem eum fugiat quo-->
+<!--            voluptas nulla pariatur?-->
+<!--        </p>-->
+<!--        <br>-->
+<!--        <div class="update">-->
+<!--            <style>-->
+<!--                .update a{-->
+<!--                    background-color: grey;-->
+<!--                    text-decoration: none;-->
+<!--                    color: #000000;-->
+<!--                    padding: 10px;-->
+<!--                    margin-bottom:10px;-->
+<!--                }-->
+<!--                .update a:hover{-->
+<!--                    background-color: #ffffff;-->
+<!--                    border: 1px solid #000000;-->
+<!--                }-->
+<!--            </style>-->
+<!--            <a href="#">Update</a>-->
+<!--        </div>-->
+<!--        <div class="delete">-->
+<!--            <style>-->
+<!--                .delete a{-->
+<!--                    background-color: grey;-->
+<!--                    text-decoration: none;-->
+<!--                    color: #000000;-->
+<!--                    padding: 10px;-->
+<!--                }-->
+<!--                .delete a:hover{-->
+<!--                    background-color: #ffffff;-->
+<!--                    border: 1px solid #000000;-->
+<!--                }-->
+<!--            </style>-->
+<!--            <a href="#">Delete</a>-->
+<!--        </div>-->
+<!--        <br>-->
+<!--        <a href="#">Go Back</a>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+	{% load static %}
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'tasks/css/details.css' %}">
     <title>Task Manager</title>
 </head>
 <body>
-    <h1>details</h1>
+	 <div class="topnav">
+        <a class="active" href="#home">Logout</a>
+    </div>
+
+    <h1 style="margin-left:16px">Task Manager</h1>
+     <div class="go-back">
+        <style>
+            .go-back a{
+                background-color: grey;
+                text-decoration: none;
+                color: #000000;
+                padding: 10px;
+                margin-left:16px;
+            }
+        </style>
+        <a href="#">Go Back</a>
+    </div>
+	<div class="task">
+		<h2>Task Title</h2>
+		<p>Task Description</p>
+		<div class="task-image">
+            <div>
+                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
+            </div>
+
+			<div>
+                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
+            </div>
+
+			<div>
+                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
+            </div>
+
+			<div>
+                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
+            </div>
+
+			<div>
+                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
+            </div>
+
+			<div>
+                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
+            </div>
+
+			<div>
+                <img style="width:250px;height:250px;" src="{%static 'tasks/images/pexels-nati-17591304.jpg'%}">
+            </div>
+        </div>
+
+
+
+		<a href="#">Update</a>
+		<a href="#">Delete</a>
+		<a href="#">Go Back</a>
+	</div>
 </body>
 </html>

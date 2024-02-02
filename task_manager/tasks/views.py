@@ -10,5 +10,12 @@ def index(request):
 def details(request):
     return render(request, "tasks/details.html")
 
+def update(request):
+    return render(request, "tasks/update.html")
+
+def create(request):
+    return render(request, 'tasks/create.html')
+
 def signin(request):
     return render(request, "tasks/signin.html")
+
