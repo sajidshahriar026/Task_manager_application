@@ -3,6 +3,8 @@
   -- python 3.10  
   -- django 5.0.1  
   -- django environ for configuring enviroment variables in django  
+  -- PostgreSQL database  
+  -- psycopg2 for postgresql and django integration  
 
 
 *Project Setup*
@@ -25,7 +27,12 @@
     ```  
     ```   
       pip install django-environ  
+    ```
+    ```
+      pip install psycopg2    
     ```  
+    
+    
     *Set Up Envrironment Variables*  
     --Go to the task_manager/task_manager and create a file named .env  
     --In that file set up the environment variable as follows:  
