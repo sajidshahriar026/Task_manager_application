@@ -7,7 +7,7 @@
   -- psycopg2 for postgresql and django integration  
 
 
-*Project Setup*
+*Project Setup*  
   -- download anaconda from (https://www.anaconda.com/download)  and install  
   -- open the anaconda prompt  
   -- create an environment using python3.10  
