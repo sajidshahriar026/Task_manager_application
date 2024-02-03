@@ -11,17 +11,17 @@
     -- create an environment using python3.10  
     ```
       conda create -n ENVNAME python=3.10  
-    ```
-    --change to the the newly created environment    
-    ```
-      conda activate ENVNAME    
-    ```
-    --install django django rest framework and django-environ in that environment    
-    ```
-      pip install django  
     ```  
-    ```
-      pip install djangorestframework
+    --change to the the newly created environment    
+    ```  
+      conda activate ENVNAME    
+    ```  
+    --install django django rest framework and django-environ in that environment      
+    ```  
+      pip install django    
+    ```    
+    ```  
+      pip install djangorestframework  
     ```  
     ```   
       pip install django-environ  
