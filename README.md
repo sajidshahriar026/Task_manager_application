@@ -34,41 +34,33 @@
   ```  
   
     
-  *Set Up Envrironment Variables*  
+  *Set Up Envrironment Variables*   
+   --Go to the task_manager/task_manager and create a file named .env  
+   --In that file set up the environment variable as follows:  
     
-     --Go to the task_manager/task_manager and create a file named .env  
-     --In that file set up the environment variable as follows:  
-      
-    ```
-      SECURITY_KEY=#your security key here 
-    ```  
-    
-    ```  
-      DATABASE_ENGINE=#backend for postgresql  
-    ```  
-    
-    ```  
-      DATABASE_NAME=#database_name  
-    ```  
-    
-    ```
-      DATABASE_USER=#database_user  
-    ```  
-    
-    ```  
-      DATABASE_PASSWORD=#password     
-    ```  
-    
-    ```  
-      DATABASE_HOST=localhost  
-    ```  
-    
-    ```  
-      DATABASE_PORT=#your configured port
-    ```  
-  
-  
-  
-  
-  
+  ```
+    SECURITY_KEY=#your security key here 
+  ```  
+  ```  
+    DATABASE_ENGINE=#backend for postgresql  
+  ```  
+  ```  
+    DATABASE_NAME=#database_name  
+  ```  
+  ```
+    DATABASE_USER=#database_user  
+  ```  
+  ```  
+    DATABASE_PASSWORD=#password     
+  ```  
+  ```  
+    DATABASE_HOST=localhost  
+  ```
+  ```  
+    DATABASE_PORT=#your configured port
+  ```   
+
+
+
+
 
