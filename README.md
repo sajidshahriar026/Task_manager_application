@@ -30,14 +30,27 @@
     --Go to the task_manager/task_manager and create a file named .env  
     --In that file set up the environment variable as follows:  
       ```
-        SECURITY_KEY=#your security key here\n
-        DATABASE_ENGINE=#backend for postgresql\n  
-        DATABASE_NAME=#database_name\n  
-        DATABASE_USER=#database_user\n  
-        DATABASE_PASSWORD=#password\n    
-        DATABASE_HOST=localhost\n  
-        DATABASE_PORT=#your configured port\n  
+        SECURITY_KEY=#your security key here 
+      ```  
+      ```  
+        DATABASE_ENGINE=#backend for postgresql  
+      ```  
+      ```  
+        DATABASE_NAME=#database_name  
+      ```  
       ```
+        DATABASE_USER=#database_user  
+      ```  
+      ```  
+        DATABASE_PASSWORD=#password     
+      ```  
+      ```  
+        DATABASE_HOST=localhost  
+      ```  
+      ```  
+        DATABASE_PORT=#your configured port
+      ```  
+    
     
     
     
