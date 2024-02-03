@@ -6,12 +6,11 @@ from django.utils import timezone
 from django.db.models import Q
 from django.views import generic
 
-from rest_framework import viewsets
 
-from .serializers import TaskSerializer
 from .models import Task, Image
 
 from datetime import datetime
+
 
 class IndexView(generic.ListView):
     template_name = "tasks/index.html"
@@ -19,6 +18,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return Task.objects.all().order_by('priority')
+
 
 class DetailView(generic.DetailView):
     template_name = "tasks/details.html"
@@ -70,7 +70,7 @@ def update(request, task_id):
                 )
                 image_for_the_updated_task.save()
 
-            return redirect('tasks:details', task_id=task.id)
+            return redirect('tasks:details', pk=task.id)
         else:
             context = {
                 'task': task,
@@ -80,7 +80,7 @@ def update(request, task_id):
             return render(request, "tasks/update.html", context)
 
     else:
-        return redirect('task:details', task_id=task.id)
+        return redirect('task:details', pk=task.id)
 @login_required(
     login_url='tasks:signin'
 )
@@ -91,7 +91,7 @@ def delete_image(request, image_id):
         image.delete()
         return redirect('tasks:update', task_id=task.id)
     else:
-        return redirect('tasks:details', task_id=task.id)
+        return redirect('tasks:details', pk=task.id)
 
 @login_required(
     login_url="tasks:signin"
@@ -160,7 +160,7 @@ def delete(request,task_id):
         return redirect('tasks:index')
 
     else:
-        return redirect('tasks:details',task_id=task_id)
+        return redirect('tasks:details', pk=task_id)
 
 @login_required(
     login_url="tasks:signin"
