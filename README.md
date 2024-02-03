@@ -19,7 +19,11 @@
     --install django django rest framework and django-environ in that environment    
     ```
       pip install django  
-      pip install djangorestframework  
+    ```  
+    ```
+      pip install djangorestframework
+    ```  
+    ```   
       pip install django-environ  
     ```
     
